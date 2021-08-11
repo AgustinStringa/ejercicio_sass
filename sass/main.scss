@@ -1,0 +1,520 @@
+//introduccion de modulos
+@import "var.scss";
+//==============================algunas utilidades=====================
+%wrap {
+    width: 90%;
+    margin: 0 auto;
+}
+
+%wrap-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+%wrap-info {
+    padding: 1rem;
+    color: $blue;
+    h2 {
+        font-size: 3rem;
+    }
+    p {
+        font-size: 2rem;
+    }
+    a {
+        font-size: 1.5rem;
+        @extend %boton;
+    }
+}
+
+%back {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+%boton {
+    display: block;
+    background-color: $pink;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $blue;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: 200px;
+    text-align: center;
+    transition: all .3s ease;
+}
+
+%boton:hover {
+    background-color: $pinkHover;
+}
+
+//===============================body=====================
+* {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: $principalFont;
+}
+
+img {
+    max-width: 100%;
+}
+
+//===============================HEADER=====================
+header.site-header {
+    background-color: $pureWhite;
+    div {
+        // border: 1px solid gray;
+        @extend %wrap;
+        @media (min-width: 768px) {
+            //flex
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        //
+        div.wrap-logo {
+            text-align: center;
+            @media (min-width: 768px) {
+                flex: 0 0 20%;
+                height: 75px;
+                margin: $noMargin;
+            }
+        }
+        //
+        nav.main-nav {
+            @media (min-width: 768px) {
+                flex: 0 0 70%;
+            }
+            ul {
+                list-style: none;
+                padding: $noPadding;
+                @media (min-width: 768px) {
+                    //flex
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                li {
+                    text-align: center;
+                    flex-basis: 15%;
+                    flex-shrink: 1;
+                    flex-grow: 0;
+                    //
+                    transition: all .3s ease;
+                    a {
+                        display: block;
+                        // background-color: lightcoral;
+                        text-decoration: none;
+                        padding: 2rem;
+                        color: $blue;
+                    }
+                }
+                li:hover {
+                    transform: scale(1.4, 1.4);
+                }
+            }
+        }
+    }
+}
+
+//===============================BODY 1=====================
+//hacer una clase para el contenedor de info y repetirla en cada body(n)
+//en el html tiene que quedar una clase para cada elemento, la joda es que cada clase implemente la original y modifique
+//tambien una para el boton
+div.back-body1 {
+    background-image: url(../img/Header.jpg.png);
+    @extend %back;
+    div.wrap-body1 {
+        @extend %wrap;
+        //
+        @extend %wrap-body;
+        @media (max-width: 767px) {
+            display: block;
+            grid-template-columns: unset;
+        }
+        div.wrap-img-body1 {}
+        div.wrap-info-body1 {
+            @extend %wrap-info;
+        }
+    }
+}
+
+//===============================BODY 2=====================
+div.back-body2 {
+    @extend %back;
+    background-image: url(../img/women_pregnant.png);
+    background-size: cover;
+    height: 900px;
+    background-attachment: fixed;
+    // height: 900px;
+    background-repeat: no-repeat;
+    //grid
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    @media (max-width: 767px) {
+        display: block;
+        grid-template-columns: $noGrid;
+        background-attachment: scroll;
+        height: auto;
+    }
+    div.wrap-body2 {
+        @extend %wrap;
+        div.wrap-info-body2 {
+            @extend %wrap-info;
+            @media (max-width: 767px) {
+                h2 {
+                    font-size: 2rem;
+                }
+                p {
+                    font-size: 1rem;
+                }
+                a {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+//===============================BODY 3=====================
+div.back-body3 {
+    background-color: $pureWhite;
+    padding: 1rem;
+    div.wrap-body3 {
+        @extend %wrap;
+        @extend %wrap-body;
+        grid-template-columns: repeat(3, 1fr);
+        text-align: center;
+        align-items: unset;
+        @media (max-width: 767px) {
+            display: block;
+            grid-template-columns: $noGrid;
+        }
+    }
+    div.program {
+        @extend %wrap-info;
+        // border: $prueba;
+        padding: 2rem;
+        img {}
+        p.title-program {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+    }
+    div.program::after {
+        content: '';
+        text-align: center;
+        background-image: url(../img/Brush.png);
+        display: block;
+        top: -300px;
+        position: relative;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        opacity: .5;
+        @media (max-width: 767px) {
+            // position: relative;
+            // width: 100%;
+            // height: 300px;
+            // top: -300px;
+        }
+    }
+}
+
+//===============================BODY 4=====================
+div.back-body4 {
+    background-image: url(../img/background_body3.jpg.png);
+    div.wrap-body4 {
+        @extend %wrap-body;
+        @extend %wrap;
+        @media (max-width: 767px) {
+            display: $initial;
+        }
+        div.wrap-img-body4 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            padding: 2rem;
+        }
+        div.wrap-info-body4 {
+            @extend %wrap-info;
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            padding: 2rem;
+            @media (max-width: 767px) {
+                padding-top: 0;
+                h2 {
+                    font-size: 2rem;
+                    text-align: center;
+                }
+                p {
+                    font-size: 1rem;
+                    text-align: center;
+                }
+                a {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+//===============================BODY 5=====================
+div.back-body5 {
+    background-image: url(../img/body_4.png);
+    div.wrap-body5 {
+        @extend %wrap;
+        @extend %wrap-body;
+        @media (max-width: 767px) {
+            display: initial;
+        }
+        height: 600px;
+        div.wrap-info-body5 {
+            @extend %wrap-info;
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            h2 {
+                font-size: 2rem;
+                text-align: center;
+            }
+            p {
+                font-size: 1rem;
+                text-align: center;
+            }
+            a {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+        }
+    }
+}
+
+//===============================BODY 6=====================
+div.back-body6 {
+    background-image: url(../img/Body5.png);
+    padding: 2rem 0;
+    div.wrap-body6 {
+        @extend %wrap;
+        height: 950px;
+        color: $blue;
+        @media (max-width: 767px) {
+            height: auto;
+            h2 {
+                font-size: 2rem;
+            }
+            p {}
+        }
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            font-size: 3rem;
+        }
+        p {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        div.wrap-galery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 8rem;
+            @media (max-width: 767px) {
+                display: initial;
+            }
+            div {
+                background-color: $pureWhite;
+                box-shadow: 2px 2px 8px rgb(116, 116, 116);
+                // border: $prueba;
+                color: $blue;
+                img {
+                    width: 100%;
+                }
+                h3 {
+                    text-align: center;
+                    font-size: 1.5rem;
+                }
+                p {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+}
+
+//===============================BODY7=====================
+div.back-body7 {
+    background-color: $pink;
+    div.wrap-body7 {
+        @extend %wrap;
+        @extend %wrap-body;
+        @media (max-width: 767px) {
+            display: initial;
+        }
+        div.wrap-img-body7 {}
+        div.wrap-info-body7 {
+            @extend %wrap-info;
+            p {
+                margin-bottom: 1.5rem;
+            }
+            a {
+                display: inline;
+                width: 20%;
+                transition: $standar;
+                i {
+                    font-size: 3rem;
+                }
+            }
+            a:hover {
+                background-color: unset!important;
+                color: gray;
+            }
+            @media (max-width: 767px) {
+                text-align: center;
+                padding-bottom: 3rem;
+                h2 {
+                    font-size: 2rem;
+                    text-align: center;
+                }
+                p {
+                    font-size: 1rem;
+                    text-align: center;
+                }
+                a {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+//===============================BODY 8=====================
+div.back-body8 {
+    background-image: url(../img/Body7.png);
+    padding: 2rem;
+    div.wrap-body8 {
+        @extend %wrap;
+        color: $blue;
+        text-align: center;
+        h2 {
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        div.wrap-form {
+            input,
+            textarea {
+                display: block;
+                width: 100%;
+                margin: 2rem 0;
+                padding: 1rem;
+                background-color: $gray;
+                border: 1px solid #a0a0a0;
+                color: #a0a0a0;
+                transition: all .5s ease;
+                border-radius: 5px
+            }
+            input[type="submit"] {
+                @extend %boton;
+                border: none;
+                width: 15%;
+                display: inline;
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
+            }
+            input:focus,
+            textarea:focus {
+                background-color: $pink;
+                color: $blue;
+                outline: 0 none;
+                box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px $blue;
+                outline: 0 none;
+            }
+            input:hover,
+            textarea:hover {
+                cursor: pointer;
+                background-color: $pink;
+            }
+        }
+    }
+}
+
+//===============================SITE FOOTER=====================
+footer.site-footer {
+    background-color: $blue;
+    color: $pureWhite;
+    div.wrap-footer {
+        @extend %wrap;
+        padding: 1rem;
+        display: flex;
+        @media (max-width: 767px) {
+            display: initial;
+            text-align: center;
+        }
+        div.data-footer {
+            flex: 0 1 calc(33.3%);
+            padding: 2rem;
+            a {
+                text-decoration: none;
+                color: $pureWhite;
+                display: block;
+                margin: 1rem 0;
+                transition: $standar;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+        div.menu-footer {
+            flex: 0 1 calc(33.3%);
+            padding: 2rem;
+            nav {
+                a {
+                    text-decoration: none;
+                    color: $pureWhite;
+                    display: block;
+                    margin: 1rem 0;
+                    transition: $standar;
+                }
+                a:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        div.logo-footer {
+            flex: 0 1 calc(33.3%);
+            padding: 2rem;
+            img {
+                margin-bottom: 2.5rem;
+            }
+            a {
+                i {
+                    color: $pureWhite;
+                    font-size: 3rem;
+                    margin-right: 1rem;
+                    transition: $standar;
+                }
+            }
+            a:hover i {
+                transform: rotate(15deg);
+            }
+        }
+    }
+}
