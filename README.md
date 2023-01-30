@@ -1,3 +1,3 @@
-# LANDING PAGE HEALTY YOGA
+# LANDING PAGE HEALTHY YOGA
 
-Web develop of a yoga company for women using HTML, CSS and SASS procesor.
+Development of a page for a yoga company for women using HTML, CSS and SASS procesor.
